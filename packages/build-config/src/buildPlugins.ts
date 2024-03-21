@@ -19,6 +19,7 @@ export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
       template: options.paths.html,
       // расположение иконки favicon
       favicon: path.resolve(options.paths.public, 'favicon.ico'),
+      publicPath: '/',
     }),
     // плагин для добавления env переменных в глобальные переменные
     // благодаря этим переменным мы можем делать рзличные сборки под мобилу и под ПК.

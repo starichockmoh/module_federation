@@ -3,6 +3,8 @@ import { Count } from '@/components/Count/Count';
 import { Link, Outlet } from 'react-router-dom';
 import image from '@/assets/radio.png';
 import Eye from '@/assets/eye.svg';
+import { shopRoutes } from '@packages/shared/src/routes/shop';
+import { adminRoutes } from '@packages/shared/src/routes/admin';
 
 import styles from './App.module.scss';
 
@@ -15,12 +17,6 @@ export function App() {
   function setZero() {
     setCount(0);
   }
-
-  if (__PLATFORM__ === 'mobile') {
-    return <div>Hello is mobile version</div>;
-  }
-  // webpack понимает, что если у нас запущена не мобильная версия
-  // то добавлять в сборку весь последующий код нет смысла!
   return (
     <div>
       <h1>Hello!!!</h1>
@@ -33,8 +29,9 @@ export function App() {
       </div>
       {__ENV__ === 'development' && <div>Only dev element!</div>}
       <div data-testid={'App.Links'} className={styles.nav}>
-        <Link to={'/about'}>About</Link>
-        <Link to={'/shop'}>Shop</Link>
+        <Link to={adminRoutes.about}>About</Link>
+        <Link to={shopRoutes.main}>Shop</Link>
+        <Link to={shopRoutes.panel}>Shop panel</Link>
         <Link to={'/'}>Home</Link>
       </div>
       <div data-testid={'App.Increase'} className={styles.elements}>

@@ -2,29 +2,24 @@ import { Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { App } from '@/components/App';
 import { About } from '@/pages/About';
-import { Shop } from '@/pages/Shop';
 
-export const router = createBrowserRouter([
+const routes = [
   {
-    path: '/',
+    path: '/admin',
     element: <App />,
     children: [
       {
-        path: '/about',
+        path: '/admin/about',
         element: (
           <Suspense fallback={'Ожидайте...'}>
             <About />
           </Suspense>
         ),
       },
-      {
-        path: '/shop',
-        element: (
-          <Suspense fallback={'Ожидайте...'}>
-            <Shop />
-          </Suspense>
-        ),
-      },
     ],
   },
-]);
+];
+
+export const router = createBrowserRouter(routes);
+
+export default routes;
